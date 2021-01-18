@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+</head>
+<body style="background-color:pink">
+<div id="loading">
+    Loading ......
+</div>
+<div class="main" id="mainContainer" hidden>
+    <img style="vertical-align:middle"
+         height="200"
+         width="250"
+         id="image"
+    >
+    <h3 id="fullname" style="font-family: Cursive; color:#ff0000;" ></h3>
+    <p id="bio" style="font-family: monospace"> </p>
+    <p>
+        <b>Follow me on</b> <a href="https://github.com/prashantstha17">GitHub</a>
+    </p>
+</div>
+<script>
+    fetch("https://api.github.com/users/prashantstha17")
+        .then(response => response.json())
+        .then(function(data){
+            console.log(data)
+
+            document.getElementById('image').src = data['avatar_url']
+            document.getElementById('fullname').textContent = data['name']
+            document.getElementById('bio').textContent = data['bio']
+            document.getElementById('mainContainer').hidden = false
+            document.getElementById('loading').hidden = true
+        })
+</script>
+<a href="https://github.com/prashantstha1717/Xmastree">My Repo</a>git a
+
+</body>
+</html>
